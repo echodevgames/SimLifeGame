@@ -1,0 +1,242 @@
+{
+  "main": {
+    "id": "89792800bbcc16ca",
+    "type": "split",
+    "children": [
+      {
+        "id": "70589faece72e374",
+        "type": "tabs",
+        "dimension": 53.567508232711305,
+        "children": [
+          {
+            "id": "d7690e495d7d8641",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Design Doc.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Design Doc"
+            }
+          }
+        ]
+      },
+      {
+        "id": "e8aadaa2a0d35012",
+        "type": "tabs",
+        "dimension": 46.43249176728869,
+        "children": [
+          {
+            "id": "8ff9dbef70007666",
+            "type": "leaf",
+            "state": {
+              "type": "graph",
+              "state": {},
+              "icon": "lucide-git-fork",
+              "title": "Graph view"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "b96b0e5e5a072202",
+    "type": "split",
+    "children": [
+      {
+        "id": "49d4eb0ee7507956",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "5c03079b9485ec36",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "0824b39aa6456d77",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "0df6f772206a343b",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "b33cb56380934b57",
+    "type": "split",
+    "children": [
+      {
+        "id": "5e7baeebc072c5cd",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "69680cb0a3cbba50",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Design Doc.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for Design Doc"
+            }
+          },
+          {
+            "id": "6f700ede3e1f6e16",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "Design Doc.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from Design Doc"
+            }
+          },
+          {
+            "id": "d60eac5674ae2fd6",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "3f61940b61cc83e6",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "All properties"
+            }
+          },
+          {
+            "id": "cadef25b19c792e9",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "Design Doc.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline of Design Doc"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "bases:Create new base": false
+    }
+  },
+  "active": "8ff9dbef70007666",
+  "lastOpenFiles": [
+    "Design Doc.md",
+    "00_Meta/Design_Pillars.md",
+    "03_Mission_System/Mission_System_Overview.md",
+    "00_Meta/Project_Overview.md",
+    "01_Core_Systems/Core_Gameplay_Loop.md",
+    "01_Core_Systems/Game_Structure.md",
+    "01_Core_Systems/Progression_System.md",
+    "02_Mechanics/Career_System.md",
+    "02_Mechanics/Economy_System.md",
+    "02_Mechanics/Needs_System.md",
+    "02_Mechanics/Social_System.md",
+    "03_Mission_System/Mission_Flow.md",
+    "03_Mission_System/Mission_Types.md",
+    "03_Mission_System/Reward_System.md",
+    "04_Content/Items.md",
+    "04_Content/Locations.md",
+    "04_Content/Unlockables.md",
+    "05_UI_UX/Mission_UI.md",
+    "05_UI_UX/Needs_UI.md",
+    "05_UI_UX/UI_Overview.md",
+    "06_Technical/Architecture.md",
+    "06_Technical/Unity_Implimentation.md",
+    "DevLogs/DelLog_03_23_26.md",
+    "DevLogs",
+    "Social_System.md",
+    "00_Meta/m) - Structured progression (clear goals and rewards)  ## Design Goals - Always give the player direction - Make progression feel meaningful - Avoid overwhelming the playerUntitled.md",
+    "Welcome.md",
+    "07_DevLogs",
+    "06_Technical",
+    "05_UI_UX",
+    "04_Content",
+    "03_Mission_System",
+    "02_Mechanics",
+    "01_Core_Systems",
+    "00_Meta"
+  ]
+}
