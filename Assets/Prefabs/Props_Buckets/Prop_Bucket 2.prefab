@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4278837927026218727}
   - component: {fileID: 6459658234333352780}
   - component: {fileID: 4091556385992531200}
+  - component: {fileID: -202988351630775402}
   m_Layer: 0
   m_Name: Prop_Bucket 2
   m_TagString: Untagged
@@ -113,3 +114,15 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -8167999531480288603, guid: 611ecba18b734b74b94d6cb9ea894587, type: 3}
+--- !u!114 &-202988351630775402
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5198546990580277440}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de399eb7be8b6cd4a9634a1ffcfe4b2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SeedyRoots.Grid.GridItem
