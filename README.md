@@ -98,6 +98,28 @@ Unlike traditional life sims, Seedy Roots focuses on:
 Full design documentation is maintained in an Obsidian vault within this repository.
 
 📁 /Design
+# Design Documentation
+
+This folder contains the full game design documentation.
+
+⚠️ Note:
+These documents are designed to be viewed in Obsidian.
+
+They use [[wiki-style links]] which are not fully supported by GitHub.
+
+For best experience:
+- Open this folder as an Obsidian vault
+- Navigate using internal links and graph view
+
+---
+
+## Key Entry Points
+
+- Core Systems: ./01_Core_Systems/
+- Mission System: ./03_Mission_System/
+- UI/UX: ./05_UI_UX/
+- Technical Architecture: ./06_Technical/
+
 
 This includes:
 - System breakdowns
