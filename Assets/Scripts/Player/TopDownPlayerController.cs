@@ -14,6 +14,9 @@ namespace SeedyRoots.Player
         [Tooltip("Movement speed in units per second.")]
         public float MoveSpeed = 5f;
 
+        [Tooltip("Degrees per second the player rotates toward the movement direction.")]
+        [SerializeField] private float rotationSpeed = 720f;
+
         private static readonly float Gravity = -9.81f;
 
         private CharacterController characterController;
@@ -36,6 +39,14 @@ namespace SeedyRoots.Player
         {
             // Convert 2D input to XZ plane movement.
             Vector3 moveDirection = new Vector3(moveInput.x, 0f, moveInput.y);
+
+            if (moveDirection.sqrMagnitude > 0.01f)
+            {
+                // Rotate the player root toward the movement direction.
+                Quaternion targetRotation = Quaternion.LookRotation(moveDirection.normalized, Vector3.up);
+                transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+            }
+
             moveDirection *= MoveSpeed * Time.deltaTime;
 
             // Apply minimal constant gravity to keep the player grounded on flat terrain.
