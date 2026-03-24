@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec440e6d857b50242a23173893898d22, type: 3}
+  m_Name: Subcat_Barrels_Wood
+  m_EditorClassIdentifier: Assembly-CSharp::SeedyRoots.Items.ItemSubcategoryData
+  subcategoryId: BARREL_WOOD
+  displayName: Wooden Barrels
+  icon: {fileID: 21300000, guid: 9bcb7c89ee7d6864980590586f2f2e50, type: 3}
+  variants:
+  - {fileID: 11400000, guid: 7ffb0f2d7abaf3842af546e874dae1a5, type: 2}
+  - {fileID: 11400000, guid: 28b11dad49ee6554bbb7400ee611a1e5, type: 2}
+  - {fileID: 11400000, guid: 97267cbda326d7643989eb2b79b04a80, type: 2}
+  - {fileID: 11400000, guid: 4b1d63edcc164a44fa9818213485647d, type: 2}
+  - {fileID: 11400000, guid: 1d4d2b85e91b23b4ea49001e83a5153d, type: 2}
+  - {fileID: 11400000, guid: 54f342b86b23fca4fb8089ad4e33fdea, type: 2}
+  - {fileID: 11400000, guid: 09a6675978b51314f847ebe522f89d6f, type: 2}

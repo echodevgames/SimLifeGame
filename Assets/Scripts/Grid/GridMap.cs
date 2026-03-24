@@ -16,6 +16,7 @@ namespace SeedyRoots.Grid
 
         private readonly Dictionary<Vector2Int, GridItem> grid = new Dictionary<Vector2Int, GridItem>();
         private readonly Dictionary<Vector2Int, TileHighlighter> tiles = new Dictionary<Vector2Int, TileHighlighter>();
+        private readonly Dictionary<Vector2Int, GridInteractable> interactables = new Dictionary<Vector2Int, GridInteractable>();
 
         private void Awake()
         {
@@ -71,7 +72,7 @@ namespace SeedyRoots.Grid
         /// <summary>Returns true when the cell has no registered occupant.</summary>
         public bool IsCellFree(Vector2Int cell)
         {
-            return !grid.ContainsKey(cell);
+            return !grid.ContainsKey(cell) && !interactables.ContainsKey(cell);
         }
 
         // ── Tile Highlighter Registry ─────────────────────────────────────
@@ -124,6 +125,27 @@ namespace SeedyRoots.Grid
             }
 
             return closest;
+        }
+
+        // ── Interactable Registry ─────────────────────────────────────────
+
+        /// <summary>Called by GridInteractable on Start to register itself.</summary>
+        public void RegisterInteractable(Vector2Int cell, GridInteractable interactable)
+        {
+            interactables[cell] = interactable;
+        }
+
+        /// <summary>Called by GridInteractable on OnDestroy to unregister itself.</summary>
+        public void UnregisterInteractable(Vector2Int cell)
+        {
+            interactables.Remove(cell);
+        }
+
+        /// <summary>Returns the GridInteractable at the given cell, or null if none exists.</summary>
+        public GridInteractable GetInteractable(Vector2Int cell)
+        {
+            interactables.TryGetValue(cell, out GridInteractable interactable);
+            return interactable;
         }
     }
 }

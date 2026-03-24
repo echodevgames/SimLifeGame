@@ -1,4 +1,5 @@
 using SeedyRoots.Grid;
+using SeedyRoots.UI;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -22,6 +23,7 @@ namespace SeedyRoots.Player
 
         private GridItem nearestItem;
         private GridItem heldItem;
+        private GridInteractable focusedInteractable;
 
         private Vector2Int pendingCell;
         private bool pendingCellIsValid;
@@ -47,8 +49,31 @@ namespace SeedyRoots.Player
         private void UpdateIdleState()
         {
             // The forward tile is the sole interaction target.
-            // Check whether a GridItem is registered on its cell.
             TileHighlighter forwardTile = forwardTileTracker.ForwardTile;
+
+            // Check for a stationary interactable first.
+            GridInteractable interactableCandidate = forwardTile != null
+                ? GridMap.Instance.GetInteractable(forwardTile.RegisteredCell)
+                : null;
+
+            if (interactableCandidate != focusedInteractable)
+            {
+                focusedInteractable?.SetFocused(false);
+                focusedInteractable = interactableCandidate;
+                focusedInteractable?.SetFocused(true);
+
+                // Clear any item feedback when an interactable takes focus.
+                if (focusedInteractable != null && nearestItem != null)
+                {
+                    nearestItem.SetNearbyFeedback(false);
+                    nearestItem = null;
+                }
+            }
+
+            // Only check for a GridItem if no interactable occupies the forward tile.
+            if (focusedInteractable != null)
+                return;
+
             GridItem candidate = forwardTile != null
                 ? GridMap.Instance.GetItem(forwardTile.RegisteredCell)
                 : null;
@@ -79,10 +104,37 @@ namespace SeedyRoots.Player
             if (!value.isPressed)
                 return;
 
+            // Priority 1 — store is open: close it.
+            if (StoreUI.Instance != null && StoreUI.Instance.IsOpen)
+            {
+                StoreUI.Instance.Close();
+                return;
+            }
+
+            // Priority 2 — stationary interactable on forward tile.
+            if (!IsCarrying && focusedInteractable != null)
+            {
+                focusedInteractable.OnInteract();
+                return;
+            }
+
+            // Priority 3 — existing GridItem pickup / place logic.
             if (!IsCarrying && nearestItem != null)
                 PickUp(nearestItem);
             else if (IsCarrying && pendingCellIsValid)
                 PlaceItem();
+        }
+
+        /// <summary>
+        /// Called by StoreUI after a purchase — disables the item's collider and begins carrying it.
+        /// OnPickedUp is safe to call on an unplaced item: IsPlaced is false so GridMap is not touched,
+        /// but the collider is correctly disabled so it doesn't deflect the CharacterController.
+        /// </summary>
+        public void ReceiveItem(GridItem item)
+        {
+            item.OnPickedUp();
+            heldItem = item;
+            item.FollowHand(handTransform);
         }
 
         private void PickUp(GridItem item)

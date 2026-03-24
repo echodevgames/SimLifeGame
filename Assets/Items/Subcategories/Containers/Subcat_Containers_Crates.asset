@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec440e6d857b50242a23173893898d22, type: 3}
+  m_Name: Subcat_Containers_Crates
+  m_EditorClassIdentifier: Assembly-CSharp::SeedyRoots.Items.ItemSubcategoryData
+  subcategoryId: CONTAINER_CRATE
+  displayName: Crates
+  icon: {fileID: 21300000, guid: 81ccf5ac8fd850544a2a71cf338cb747, type: 3}
+  variants:
+  - {fileID: 11400000, guid: c277ada270f3f06418dfafd0f1f23f88, type: 2}
+  - {fileID: 11400000, guid: 2bb8ed21416004140b08137e0dbb195f, type: 2}
+  - {fileID: 11400000, guid: a2bc69ee62ceb2f46bd7e44bac91cd1a, type: 2}
+  - {fileID: 11400000, guid: 99c859b852303a44db6059988e85c39a, type: 2}

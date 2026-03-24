@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec440e6d857b50242a23173893898d22, type: 3}
+  m_Name: Subcat_Hay_Stacks
+  m_EditorClassIdentifier: Assembly-CSharp::SeedyRoots.Items.ItemSubcategoryData
+  subcategoryId: HAY_STACK
+  displayName: Haystacks
+  icon: {fileID: 21300000, guid: d4b4ca5e69eba4644916af8b2fcecf94, type: 3}
+  variants:
+  - {fileID: 11400000, guid: 8ac96cf7d2decfc4d9a3986f6a509f9f, type: 2}
+  - {fileID: 11400000, guid: 53f837b67db50be4487632d5eee3256c, type: 2}
+  - {fileID: 11400000, guid: f1d2f78af4aa1674b89e44bc4f330986, type: 2}
+  - {fileID: 11400000, guid: dec2fc2aa33f0b24296d623657b12544, type: 2}
+  - {fileID: 11400000, guid: 1ddf6de473237b245a21d82a1c9f47a8, type: 2}
+  - {fileID: 11400000, guid: 97312da37d3529a478d3bb3c8b2285df, type: 2}
+  - {fileID: 11400000, guid: 15496e6a862fc554b99a70e6d0ce2e20, type: 2}

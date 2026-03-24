@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec440e6d857b50242a23173893898d22, type: 3}
+  m_Name: Subcat_Tools_BigTools
+  m_EditorClassIdentifier: Assembly-CSharp::SeedyRoots.Items.ItemSubcategoryData
+  subcategoryId: TOOL_BIGTOOL
+  displayName: Big Tools
+  icon: {fileID: 21300000, guid: e6e7b4c47e136ad41b59e27a7906bc0e, type: 3}
+  variants:
+  - {fileID: 11400000, guid: 4f6edc377c41b064390b3d2346ac45d8, type: 2}
+  - {fileID: 11400000, guid: 38933bc2521a8224fae6ed1a565dbcb8, type: 2}
+  - {fileID: 11400000, guid: 643647097c3074743a2904c54d83547b, type: 2}
+  - {fileID: 11400000, guid: 982bb3227caefa340be1b39796fcc3e6, type: 2}
+  - {fileID: 11400000, guid: fa9dd1f55f8e80f41a735e986d23a8d2, type: 2}
+  - {fileID: 11400000, guid: 888afb777a1d431439025ae893f73c00, type: 2}
+  - {fileID: 11400000, guid: 340ded0c361e5814082f8779417a990d, type: 2}

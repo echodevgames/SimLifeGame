@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec440e6d857b50242a23173893898d22, type: 3}
+  m_Name: Subcat_Wells_Wood
+  m_EditorClassIdentifier: Assembly-CSharp::SeedyRoots.Items.ItemSubcategoryData
+  subcategoryId: WELL_WOOD
+  displayName: Wells
+  icon: {fileID: 0}
+  variants:
+  - {fileID: 11400000, guid: e0c7bde23a5856d4ab76825ac460c4d0, type: 2}
+  - {fileID: 11400000, guid: 7370b35357a44544182542fd0906ea6d, type: 2}

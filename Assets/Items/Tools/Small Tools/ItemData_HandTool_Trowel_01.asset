@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db6b1a088ecc43f43b6bf02f691b0e72, type: 3}
+  m_Name: ItemData_HandTool_Trowel_01
+  m_EditorClassIdentifier: Assembly-CSharp::SeedyRoots.Items.ItemData
+  itemId: TOOL_HANDTOOL_TROWEL_01
+  itemName: Hand Trowel 01
+  icon: {fileID: 21300000, guid: a08dea4873dd049488e2dc4f407b89d4, type: 3}
+  prefab: {fileID: 273402775248001488, guid: 12add6a96fff65c4dbeb1a276d017913, type: 3}
+  cost: 50

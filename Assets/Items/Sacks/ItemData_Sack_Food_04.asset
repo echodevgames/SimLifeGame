@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db6b1a088ecc43f43b6bf02f691b0e72, type: 3}
+  m_Name: ItemData_Sack_Food_04
+  m_EditorClassIdentifier: Assembly-CSharp::SeedyRoots.Items.ItemData
+  itemId: SACK_FOOD_04
+  itemName: Food Sack 04
+  icon: {fileID: 21300000, guid: 12fc9c2f086f9ec4493f99661dba84f5, type: 3}
+  prefab: {fileID: 5634056301654650978, guid: 8e695e0a174c0124198c2a4eac33308b, type: 3}
+  cost: 15

@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec440e6d857b50242a23173893898d22, type: 3}
+  m_Name: Subcat_Containers_Boxes
+  m_EditorClassIdentifier: Assembly-CSharp::SeedyRoots.Items.ItemSubcategoryData
+  subcategoryId: CONTAINER_BOX
+  displayName: Boxes
+  icon: {fileID: 21300000, guid: 783bcb0fce86e9345a419d6cf7dbf61e, type: 3}
+  variants:
+  - {fileID: 11400000, guid: 3242fa1d12c6f2d489dc3c33d159e06c, type: 2}
+  - {fileID: 11400000, guid: a13895ff9697e3748a4e8286d5add990, type: 2}
+  - {fileID: 11400000, guid: e1f305c1e740e9248a9c6301d7349c68, type: 2}
+  - {fileID: 11400000, guid: 36e97dfc2490f684dba35dbeccbc140a, type: 2}
+  - {fileID: 11400000, guid: c2638c33cf55cc74ca9491565daebdc0, type: 2}
+  - {fileID: 11400000, guid: e718616dc30486c4fa304f3657484fb2, type: 2}

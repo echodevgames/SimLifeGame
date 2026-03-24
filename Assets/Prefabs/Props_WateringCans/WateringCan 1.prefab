@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1523100862547590815}
   - component: {fileID: 2552264298061567782}
   - component: {fileID: 8556193896610023352}
+  - component: {fileID: 1385225042265327499}
   m_Layer: 0
   m_Name: WateringCan 1
   m_TagString: Untagged
@@ -113,3 +114,15 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -4338989598495525477, guid: 611ecba18b734b74b94d6cb9ea894587, type: 3}
+--- !u!114 &1385225042265327499
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9144223713455936537}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de399eb7be8b6cd4a9634a1ffcfe4b2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SeedyRoots.Grid.GridItem
