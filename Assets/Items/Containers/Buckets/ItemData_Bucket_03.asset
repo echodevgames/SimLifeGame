@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SeedyRoots.Items.ItemData
   itemId: CONTAINER_BUCKET_03
   itemName: Bucket 03
-  icon: {fileID: 21300000, guid: 5ccd2fb961084de4ebd50113bd73e380, type: 3}
+  icon: {fileID: 21300000, guid: 9b00e711b8c2a3c44bf7a9542eaddebb, type: 3}
   prefab: {fileID: 5198546990580277440, guid: 5263f7a53d2483b439bfeaa159b83ccc, type: 3}
   cost: 15
+  canBeStackedOn: 0
+  canStack: 1

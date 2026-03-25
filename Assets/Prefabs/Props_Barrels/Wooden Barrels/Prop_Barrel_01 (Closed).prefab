@@ -54,7 +54,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 15b1a3d4a697f6f439a8775ad7e8a1c2, type: 3}
       propertyPath: m_Name
-      value: Prop_Berrel_01.001
+      value: Prop_Barrel_01 (Closed)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -106,3 +106,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de399eb7be8b6cd4a9634a1ffcfe4b2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SeedyRoots.Grid.GridItem
+  itemData: {fileID: 11400000, guid: 7ffb0f2d7abaf3842af546e874dae1a5, type: 2}

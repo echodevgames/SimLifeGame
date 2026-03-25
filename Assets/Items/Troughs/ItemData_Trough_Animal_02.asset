@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: ItemData_Trough_Animal_02
   m_EditorClassIdentifier: Assembly-CSharp::SeedyRoots.Items.ItemData
   itemId: TROUGH_ANIMAL_02
-  itemName: Animal Trough 02
+  itemName: Animal Feeder 02
   icon: {fileID: 21300000, guid: cb4cad4ffc6f407439dc0f148a5a8e01, type: 3}
   prefab: {fileID: 3484843104852291222, guid: 259dc5221af9e214e87ef02b3ddc29a1, type: 3}
   cost: 120
+  canBeStackedOn: 0
+  canStack: 0

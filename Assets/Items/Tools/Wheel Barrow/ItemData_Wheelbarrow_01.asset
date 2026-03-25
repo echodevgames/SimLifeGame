@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: ItemData_Wheelbarrow_01
   m_EditorClassIdentifier: Assembly-CSharp::SeedyRoots.Items.ItemData
   itemId: TOOL_WHEELBARROW_01
-  itemName: Wheelbarrow 01
+  itemName: Wheelbarrow
   icon: {fileID: 21300000, guid: 0e024f1c2e6b0f144ba06c4f58315146, type: 3}
   prefab: {fileID: 1189198572637911586, guid: 72c3880aa9165ab4da9cb0656012807f, type: 3}
-  cost: 0
+  cost: 150
+  canBeStackedOn: 0
+  canStack: 0

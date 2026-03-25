@@ -17,3 +17,5 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: 4381a3e3ca4b37848a47e8a5eb549e58, type: 3}
   prefab: {fileID: 1620093990678951113, guid: 36eb4f37d04a83c4a83a1809e7a139ee, type: 3}
   cost: 30
+  canBeStackedOn: 0
+  canStack: 1

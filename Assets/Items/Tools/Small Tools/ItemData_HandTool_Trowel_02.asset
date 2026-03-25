@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: ItemData_HandTool_Trowel_02
   m_EditorClassIdentifier: Assembly-CSharp::SeedyRoots.Items.ItemData
   itemId: TOOL_HANDTOOL_TROWEL_02
-  itemName: Hand Trowel 02
+  itemName: Trowel 02
   icon: {fileID: 21300000, guid: ab6277a276c801d48bc0785ace3502d4, type: 3}
   prefab: {fileID: 5038638941717291079, guid: 55147714e7e74b44f8d1386ce1193497, type: 3}
   cost: 50
+  canBeStackedOn: 0
+  canStack: 1

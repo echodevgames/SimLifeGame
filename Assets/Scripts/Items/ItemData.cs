@@ -16,5 +16,11 @@ namespace SeedyRoots.Items
         public Sprite icon;
         public GameObject prefab;
         public int cost;
+
+        /// <summary>True if other items can be placed on top of this item via its StackMount child transform.</summary>
+        public bool canBeStackedOn;
+
+        /// <summary>True if this item is allowed to be placed on top of a canBeStackedOn host.</summary>
+        public bool canStack;
     }
 }
