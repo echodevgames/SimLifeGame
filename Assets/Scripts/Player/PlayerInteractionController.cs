@@ -125,12 +125,18 @@ namespace SeedyRoots.Player
             if (pendingCellIsValid)
                 pendingCell = forwardTile.RegisteredCell;
 
-            // Renderer-bounds overflow check: the cell may be free in the registry but a
-            // neighbour's mesh physically extends into it, causing visual interpenetration.
+            // Renderer-bounds overflow check — two directions:
+            // 1. Do any placed neighbours intrude INTO the target cell's footprint?
+            // 2. Would the held item, projected to snap position, intrude INTO any neighbour?
+            // Both must pass for the cell to be considered valid.
             overlapNeighbor = null;
             if (pendingCellIsValid)
             {
                 overlapNeighbor = FindOverlappingNeighbor(forwardTile);
+
+                if (overlapNeighbor == null)
+                    overlapNeighbor = FindHeldItemConflict(heldItem, forwardTile);
+
                 if (overlapNeighbor != null)
                     pendingCellIsValid = false;
             }
@@ -168,13 +174,23 @@ namespace SeedyRoots.Player
 
         /// <summary>
         /// Checks all grid-registered items in neighbouring cells to see whether any of their
-        /// renderer bounds intersect the target cell's XZ footprint. Uses actual visual bounds
-        /// rather than physics colliders — catches mesh overflow even when colliders are cell-sized.
+        /// renderer bounds meaningfully penetrate the target cell's XZ footprint. Uses actual
+        /// visual bounds rather than physics colliders — catches mesh overflow even when
+        /// colliders are cell-sized.
+        /// A minimum penetration depth is required in both axes before a neighbour is
+        /// considered a true blocker, preventing false positives from items whose bounds
+        /// merely graze a shared edge.
         /// </summary>
         private GridItem FindOverlappingNeighbor(TileHighlighter tile)
         {
+            // Minimum depth (in world units) that a neighbour's bounds must penetrate into
+            // the target cell in BOTH axes to count as a real block. Raising this value makes
+            // the check more permissive; lowering it makes it stricter.
+            const float MinPenetrationDepth = 0.15f;
+
             Vector3 cellCenter = GridMap.Instance.CellToWorld(tile.RegisteredCell);
-            // Shrink the footprint slightly to avoid false positives on shared boundaries.
+            // Slightly shrink the footprint so items that share a cell boundary without
+            // visually intruding do not trigger a false positive.
             float halfSize = GridMap.CellSize * 0.45f;
             float minX = cellCenter.x - halfSize, maxX = cellCenter.x + halfSize;
             float minZ = cellCenter.z - halfSize, maxZ = cellCenter.z + halfSize;
@@ -191,8 +207,60 @@ namespace SeedyRoots.Player
                     if (neighbor == null) continue;
 
                     Bounds b = neighbor.GetWorldBounds();
-                    if (b.max.x > minX && b.min.x < maxX &&
-                        b.max.z > minZ && b.min.z < maxZ)
+
+                    // Require a minimum penetration depth in both axes before treating this
+                    // neighbour as a real blocker. Items that merely graze a shared edge
+                    // (e.g. a watering can whose mesh extends a few centimetres past its cell)
+                    // are allowed through; only genuine visual intrusions are blocked.
+                    float overlapX = Mathf.Min(b.max.x, maxX) - Mathf.Max(b.min.x, minX);
+                    float overlapZ = Mathf.Min(b.max.z, maxZ) - Mathf.Max(b.min.z, minZ);
+
+                    if (overlapX >= MinPenetrationDepth && overlapZ >= MinPenetrationDepth)
+                        return neighbor;
+                }
+            }
+
+            return null;
+        }
+
+        /// <summary>
+        /// Projects the held item's renderer bounds to the snap position on the target tile,
+        /// then checks whether those projected bounds would meaningfully penetrate any
+        /// already-placed neighbour's bounds. Catches the case where the INCOMING item is
+        /// large and would visually overlap an existing item even though the target cell is
+        /// grid-free and no neighbour overflows into it.
+        /// </summary>
+        private GridItem FindHeldItemConflict(GridItem heldItem, TileHighlighter tile)
+        {
+            const float MinPenetrationDepth = 0.15f;
+
+            // Translate the held item's bounds center from its current hand position
+            // to where it will be snapped. Only the XZ plane matters for ground collision.
+            Bounds held = heldItem.GetWorldBounds();
+            Vector3 snap = tile.PlacementPosition;
+            Vector3 delta = snap - heldItem.transform.position;
+
+            float heldMinX = held.min.x + delta.x;
+            float heldMaxX = held.max.x + delta.x;
+            float heldMinZ = held.min.z + delta.z;
+            float heldMaxZ = held.max.z + delta.z;
+
+            for (int dx = -2; dx <= 2; dx++)
+            {
+                for (int dz = -2; dz <= 2; dz++)
+                {
+                    if (dx == 0 && dz == 0) continue;
+
+                    Vector2Int neighborCell = tile.RegisteredCell + new Vector2Int(dx, dz);
+                    GridItem neighbor = GridMap.Instance.GetItem(neighborCell);
+                    if (neighbor == null) continue;
+
+                    Bounds b = neighbor.GetWorldBounds();
+
+                    float overlapX = Mathf.Min(heldMaxX, b.max.x) - Mathf.Max(heldMinX, b.min.x);
+                    float overlapZ = Mathf.Min(heldMaxZ, b.max.z) - Mathf.Max(heldMinZ, b.min.z);
+
+                    if (overlapX >= MinPenetrationDepth && overlapZ >= MinPenetrationDepth)
                         return neighbor;
                 }
             }

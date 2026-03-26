@@ -167,6 +167,8 @@ namespace SeedyRoots.Editor
             int colIconFile      = IndexOf(headers, "icon_file");
             int colStackedOn     = IndexOf(headers, "can_be_stacked_on");
             int colCanStack      = IndexOf(headers, "can_stack");
+            int colCategory      = IndexOf(headers, "category");
+            int colSubcategory   = IndexOf(headers, "subcategory");
 
             if (colItemId < 0 || colAssetFile < 0)
             {
@@ -224,6 +226,12 @@ namespace SeedyRoots.Editor
                 if (colCanStack >= 0)
                     item.canStack = SafeGet(cols, colCanStack).Equals("TRUE", StringComparison.OrdinalIgnoreCase);
 
+                if (colCategory >= 0)
+                    item.category = SafeGet(cols, colCategory);
+
+                if (colSubcategory >= 0)
+                    item.subcategory = SafeGet(cols, colSubcategory);
+
                 // ── Icon ──────────────────────────────────────────────────────
                 string iconWarning = string.Empty;
                 if (!string.IsNullOrEmpty(iconFilename))
@@ -246,7 +254,7 @@ namespace SeedyRoots.Editor
                 updated++;
 
                 lastResults.Add(new ImportResult(i + 1, assetFilename, true,
-                    $"OK — cost:{item.cost}  stackedOn:{item.canBeStackedOn}  canStack:{item.canStack}{iconWarning}"));
+                    $"OK — cost:{item.cost}  cat:{item.category}  stackedOn:{item.canBeStackedOn}  canStack:{item.canStack}{iconWarning}"));
             }
 
             AssetDatabase.SaveAssets();

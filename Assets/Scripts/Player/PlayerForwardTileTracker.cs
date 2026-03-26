@@ -75,7 +75,11 @@ namespace SeedyRoots.Player
 
         /// <summary>
         /// Runs a SphereCast in the player's forward direction and returns the closest
-        /// tile trigger hit, excluding the tile the player is currently standing on.
+        /// tile in front of the player, excluding the tile they are standing on.
+        /// Tiles are validated by dot-product against transform.forward rather than
+        /// cast distance alone — this prevents nearby tiles from being skipped when
+        /// the cast sphere already overlaps them at the origin (distance == 0).
+        /// Falls back to a registry lookup one cell ahead, then to the standing tile.
         /// </summary>
         private TileHighlighter CastForwardTile()
         {
@@ -92,29 +96,55 @@ namespace SeedyRoots.Player
 
             TileHighlighter standing = standingTracker.CurrentTile;
             TileHighlighter best = null;
-            float bestDistance = float.MaxValue;
+            float bestSqrDist = float.MaxValue;
 
             for (int i = 0; i < hitCount; i++)
             {
-                // distance == 0 means the cast sphere was already overlapping this collider
-                // at the origin — the tile is beside or behind the player, not ahead.
-                if (hitBuffer[i].distance <= 0f)
-                    continue;
-
                 if (!hitBuffer[i].collider.TryGetComponent<TileHighlighter>(out TileHighlighter tile))
                     continue;
 
                 if (tile == standing)
                     continue;
 
-                if (hitBuffer[i].distance < bestDistance)
+                // Validate that the tile is actually in front using its world position.
+                // Cast distance alone is unreliable: when the sphere already overlaps a tile
+                // at the origin, Unity reports distance == 0 for that tile regardless of
+                // whether it is ahead of or beside the player. The dot product is authoritative.
+                Vector3 toTile = tile.transform.position - transform.position;
+                toTile.y = 0f;
+                float forwardDot = Vector3.Dot(toTile.normalized, transform.forward);
+                if (forwardDot < 0.3f) // reject anything more than ~72° off forward
+                    continue;
+
+                // Pick the closest tile by actual world distance, not cast distance.
+                float sqrDist = toTile.sqrMagnitude;
+                if (sqrDist < bestSqrDist)
                 {
-                    bestDistance = hitBuffer[i].distance;
+                    bestSqrDist = sqrDist;
                     best = tile;
                 }
             }
 
-            return best;
+            if (best != null)
+                return best;
+
+            // Fallback 1 — registry lookup one cell ahead in the player's facing direction.
+            // Handles cases where the held item's collider blocks the sphere cast.
+            if (GridMap.Instance != null)
+            {
+                Vector3 oneAhead = transform.position + transform.forward * GridMap.CellSize;
+                Vector2Int aheadCell = GridMap.Instance.WorldToCell(oneAhead);
+                TileHighlighter aheadTile = GridMap.Instance.GetTile(aheadCell);
+                if (aheadTile != null && aheadTile != standing)
+                    return aheadTile;
+
+                // Fallback 2 — use the standing tile itself so the player can always place
+                // on their own cell when no forward tile is reachable.
+                if (standing != null)
+                    return standing;
+            }
+
+            return null;
         }
 
 #if UNITY_EDITOR

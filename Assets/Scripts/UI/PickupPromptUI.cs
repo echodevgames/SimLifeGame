@@ -19,6 +19,7 @@ namespace SeedyRoots.UI
         [SerializeField] private TextMeshProUGUI promptLabel;
         [SerializeField] private Button confirmButton;
         [SerializeField] private Button cancelButton;
+        [SerializeField] private Image itemIcon;
 
         public bool IsOpen { get; private set; }
 
@@ -63,6 +64,13 @@ namespace SeedyRoots.UI
             if (promptLabel != null)
                 promptLabel.text = $"Pick up {displayName}?";
 
+            if (itemIcon != null)
+            {
+                Sprite sprite = item.ItemData?.icon;
+                itemIcon.sprite = sprite;
+                itemIcon.gameObject.SetActive(sprite != null);
+            }
+
             confirmButton?.onClick.RemoveAllListeners();
             cancelButton?.onClick.RemoveAllListeners();
 
@@ -86,6 +94,8 @@ namespace SeedyRoots.UI
 
             if (promptPanel != null)
                 promptPanel.SetActive(false);
+
+            itemIcon?.gameObject.SetActive(false);
 
             IsOpen = false;
         }

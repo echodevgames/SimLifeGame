@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using SeedyRoots.Core;
 using SeedyRoots.Grid;
 using SeedyRoots.Items;
 using SeedyRoots.Player;
@@ -58,6 +59,7 @@ namespace SeedyRoots.UI
             if (subcategoryRowContainer == null) Debug.LogWarning("[StoreUI] subcategoryRowContainer is not assigned.", this);
             if (subcategoryRowPrefab == null)    Debug.LogWarning("[StoreUI] subcategoryRowPrefab is not assigned.", this);
             if (closeButton == null)             Debug.LogWarning("[StoreUI] closeButton is not assigned.", this);
+            if (CurrencyManager.Instance == null) Debug.LogWarning("[StoreUI] CurrencyManager.Instance is null — purchase affordability checks will be skipped.", this);
 
             if (storePanel != null)
                 storePanel.SetActive(false);
@@ -161,6 +163,12 @@ namespace SeedyRoots.UI
             if (item.prefab == null)
             {
                 Debug.LogError($"[StoreUI] ItemData '{item.itemName}' has no prefab assigned.", this);
+                return;
+            }
+
+            if (CurrencyManager.Instance != null && !CurrencyManager.Instance.TrySpend(item.cost))
+            {
+                HintNotificationUI.Instance?.Show("Not enough money");
                 return;
             }
 

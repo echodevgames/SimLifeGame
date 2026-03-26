@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using SeedyRoots.Grid;
 using TMPro;
@@ -20,6 +21,9 @@ namespace SeedyRoots.Core
 
         /// <summary>Read-only view of the current inventory contents.</summary>
         public IReadOnlyList<GridItem> Items => items;
+
+        /// <summary>Fires whenever an item is added to the inventory.</summary>
+        public event Action<GridItem> OnItemAdded;
 
         private void Awake()
         {
@@ -52,6 +56,7 @@ namespace SeedyRoots.Core
             items.Add(item);
             item.gameObject.SetActive(false);
             RefreshLabel();
+            OnItemAdded?.Invoke(item);
 
             Debug.Log($"[InventoryManager] Added '{item.name}'. Total: {items.Count}");
         }

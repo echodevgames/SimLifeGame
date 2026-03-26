@@ -1,4 +1,5 @@
 using System;
+using SeedyRoots.Core;
 using SeedyRoots.Items;
 using TMPro;
 using UnityEngine;
@@ -21,6 +22,7 @@ namespace SeedyRoots.UI
         [SerializeField] private Button variantNextButton;
         [SerializeField] private TextMeshProUGUI variantLabel;
         [SerializeField] private Image variantIcon;
+        [SerializeField] private TextMeshProUGUI costLabel;
         [SerializeField] private Button buyButton;
 
         private ItemSubcategoryData subcategory;
@@ -53,6 +55,30 @@ namespace SeedyRoots.UI
 
             if (buyButton != null)
                 buyButton.onClick.AddListener(OnBuy);
+
+            if (CurrencyManager.Instance != null)
+            {
+                CurrencyManager.Instance.OnBalanceChanged += OnBalanceChanged;
+                OnBalanceChanged(CurrencyManager.Instance.Balance);
+            }
+        }
+
+        private void OnDestroy()
+        {
+            if (CurrencyManager.Instance != null)
+                CurrencyManager.Instance.OnBalanceChanged -= OnBalanceChanged;
+        }
+
+        private void OnBalanceChanged(int balance)
+        {
+            if (subcategory == null || subcategory.variants == null || subcategory.variants.Count == 0)
+                return;
+
+            ItemData current = subcategory.variants[currentVariantIndex];
+            bool canAfford = CurrencyManager.Instance != null && CurrencyManager.Instance.CanAfford(current.cost);
+
+            if (buyButton != null)
+                buyButton.interactable = canAfford;
         }
 
         private void OnVariantPrev()
@@ -87,6 +113,9 @@ namespace SeedyRoots.UI
             if (variantLabel != null)
                 variantLabel.text = current.itemName;
 
+            if (costLabel != null)
+                costLabel.text = $"${current.cost}";
+
             if (variantIcon != null)
             {
                 variantIcon.sprite = current.icon;
@@ -104,6 +133,10 @@ namespace SeedyRoots.UI
 
             if (variantNextButton != null)
                 variantNextButton.interactable = currentVariantIndex < subcategory.variants.Count - 1;
+
+            // Re-evaluate affordability for the newly selected variant.
+            if (CurrencyManager.Instance != null)
+                OnBalanceChanged(CurrencyManager.Instance.Balance);
         }
     }
 }

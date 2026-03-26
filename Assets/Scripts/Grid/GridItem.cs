@@ -70,6 +70,14 @@ namespace SeedyRoots.Grid
                 return;
             }
 
+            // If the collider is already disabled, OnPickedUp was called before Start ran.
+            // This happens when an item is purchased from the store and immediately handed
+            // to the player (Instantiate → ReceiveItem → OnPickedUp, then Start runs the
+            // next frame at the hand position). Skip grid registration to avoid a phantom
+            // entry at the hand's cell that would block placement checks.
+            if (itemCollider != null && !itemCollider.enabled)
+                return;
+
             CurrentCell = GridMap.Instance.WorldToCell(transform.position);
             GridMap.Instance.SetItem(CurrentCell, this);
             IsPlaced = true;
